@@ -42,8 +42,8 @@ public class Book implements Serializable { //changed book into Book
 		return id;
 	}
 
-	public String TITLE() {
-		return TITLE;
+	public String getTitle() { //lowercase and getTitle added
+		return title;
 	}
 
 
