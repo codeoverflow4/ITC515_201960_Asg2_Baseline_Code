@@ -1,24 +1,30 @@
 import java.io.Serializable;
 
+/**
+Author: Sandesh Magar
+Mediator: Rushan Devanga
+Reviewer: Osanda Ranaweera
+**/
 
 @SuppressWarnings("serial")
-public class Book implements Serializable {
+public class Book implements Serializable { //changed book into Book
+/** changing variables from UPPERCASE into LOWERCASE**/
 
 	private String title;
 	private String author;
-	private String CALLNO;
-	private int ID;
+	private String callNo;
+	private int id;
 
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //modified to State from STATE
+	private State state;
 
-
-	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
+//lowercased all the variables
+	public Book(String author, String title, String callNo, int id) {
+		this.author = author;
+		this.title = title;
+		this.callNo = callNo;
+		this.id = id;
+		this.state = State.AVAILABLE;
 	}
 
 	public String toString() {
@@ -27,7 +33,7 @@ public class Book implements Serializable {
 		  .append("  Title:  ").append(TITLE).append("\n")
 		  .append("  Author: ").append(AUTHOR).append("\n")
 		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(State);
+		  .append("  State:  ").append(STATE);
 
 		return sb.toString();
 	}
