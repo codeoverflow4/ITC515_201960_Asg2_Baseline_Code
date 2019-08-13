@@ -26,16 +26,16 @@ public class Book implements Serializable { //changed book into Book
 		this.id = id;
 		this.state = State.AVAILABLE;
 	}
-
+//lowercasing variable of class toString methods and changed sb variable name to stringBuilder
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
-		  .append("  Author: ").append(AUTHOR).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(STATE);
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Book: ").append(id).append("\n")
+		  .append("  Title:  ").append(title).append("\n")
+		  .append("  Author: ").append(author).append("\n")
+		  .append("  CallNo: ").append(callNo).append("\n")
+		  .append("  State:  ").append(state);
 
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	public Integer ID() {
