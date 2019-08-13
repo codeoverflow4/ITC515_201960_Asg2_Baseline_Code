@@ -38,8 +38,8 @@ public class Book implements Serializable { //changed book into Book
 		return stringBuilder.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public int getId() { //Integer into int and getId addded
+		return id;
 	}
 
 	public String TITLE() {
