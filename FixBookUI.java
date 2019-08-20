@@ -1,20 +1,27 @@
+// author :RushanDevanga mediator :OsandaRanawera Reviewer:Sandesh Magar
 import java.util.Scanner;
 
-
-public class FixBookUI {
+//FixBookUI change as a Fixbookui 
+public class FixBookUI { 
 
 	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	//UI_STATE change as a UiState (Underscore seperated class are not acceptable and uppercase letter and to be in camelBack)
 
 	private FixBookControl CoNtRoL;
+	//CoNtRoL change as a control All Variable are starting With Lowe Case and To Be CamelBack
 	private Scanner input;
 	private UI_STATE StAtE;
+	//There are two changes here UI_STATE as a UiState and StAtE as a state
 
 	
 	public FixBookUI(FixBookControl control) {
 		this.CoNtRoL = control;
+		
 		input = new Scanner(System.in);
 		StAtE = UI_STATE.INITIALISED;
+		
 		control.Set_Ui(this);
+		
 	}
 
 
