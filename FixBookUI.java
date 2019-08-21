@@ -14,18 +14,22 @@ public class FixBookUI {
 	//There are two changes here UI_STATE as a UiState and StAtE as a state
 
 	
+	////FixBookUI change as a Fixbookui
 	public FixBookUI(FixBookControl control) {
 		this.CoNtRoL = control;
+		//CoNtRoL has to be change control
 		
 		input = new Scanner(System.in);
+		//StAtE change as a state
 		StAtE = UI_STATE.INITIALISED;
 		
 		control.Set_Ui(this);
 		
 	}
 
-
+        //Set_State(UI_STATE state) change as a setstate(UiState state)
 	public void Set_State(UI_STATE state) {
+		//StAtE change as a state
 		this.StAtE = state;
 	}
 
