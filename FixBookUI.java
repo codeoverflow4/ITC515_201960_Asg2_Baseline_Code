@@ -33,25 +33,32 @@ public class FixBookUI {
 		this.StAtE = state;
 	}
 
-	
+	//RuN change as a run 
 	public void RuN() {
+		//this needs to be updtaed [this.output]
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
-			
+			//StAtE change as a currentState because its meaningful thats why addedthe current word here.
 			switch (StAtE) {
 			
 			case READY:
+				//Book_STR change as a bookScan	
 				String Book_STR = input("Scan Book (<enter> completes): ");
+					//Book_STR.length change as bookScan.lenght
 				if (Book_STR.length() == 0) {
+					//CoNtRoL.SCannING_COMplete  change as a this.control.completeScanning
 					CoNtRoL.SCannING_COMplete();
 				}
 				else {
 					try {
+						//Book_ID change as a bookId and (Book_STR)change as a bookScan
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
+						//CoNtRoL.Book_scanned(Book_ID) change as a this.control.scanBook(bookId)
 						CoNtRoL.Book_scanned(Book_ID);
 					}
 					catch (NumberFormatException e) {
+						//updated with this.output...
 						output("Invalid bookId");
 					}
 				}
