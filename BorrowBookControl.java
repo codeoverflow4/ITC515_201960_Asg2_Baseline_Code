@@ -37,13 +37,13 @@ public class BorrowBookControl { //this is testing 4
 	}
 
 
-	public void Swiped(int MEMMER_ID) {
-		if (!State.equals(CONTROL_STATE.READY))
+	public void onSwiped(int memberId) { //method name Swiped is changed into onSwiped, variable M is renamed into member, LIBRARY into library
+		if (!state.equals(ControlState.READY))
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 
-		M = LIBRARY.MEMBER(MEMMER_ID);
-		if (M == null) {
-			UI.Display("Invalid memberId");
+		member = LIBRARY.getMember(memberId); //MEMBER method is renamed into more suitable name getMember
+		if (member == null) {
+			borrowBookUI.setDisplay("Invalid memberId"); // display to setDisplay
 			return;
 		}
 		if (LIBRARY.MEMBER_CAN_BORROW(M)) {
