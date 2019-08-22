@@ -35,17 +35,17 @@ public class BorrowBookUI {
 	}
 
 
-	public void Set_State(UI_STATE STATE) {
-		this.StaTe = STATE;
+	public void setState(UIState uIState) { //Set_State renamed to setState and StaTe renamed to uIState and UI_STATE into UIState
+		this.uIState = uIState;
 	}
 
 
-	public void run() {
+	public void run() {  //control renamed to borrowBookControl, StaTe renamed to uIState and UI_STATE into UIState and as well as methods from BorrowBookContol class are adjusted
 		output("Borrow Book Use Case UI\n");
 
 		while (true) {
 
-			switch (StaTe) {
+			switch (uIStaTe) {
 
 			case CANCELLED:
 				output("Borrowing Cancelled");
