@@ -56,14 +56,14 @@ public class BorrowBookControl { //this is testing 4
 			borrowBookUI.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 
 
-	public void Scanned(int bookId) {
-		BOOK = null;
-		if (!State.equals(CONTROL_STATE.SCANNING)) {
+	public void onScanned(int bookId) { //method name Scanned is changed into onScanned, BOOK is renamed into book, State into state, CONTROL_STATE into ControlState
+		book = null;
+		if (!state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}
-		BOOK = LIBRARY.Book(bookId);
-		if (BOOK == null) {
-			UI.Display("Invalid bookId");
+		book = library.getBook(bookId); //getBook method name is introduced
+		if (book == null) {
+			borrowBookUI.setDisplay("Invalid bookId");//setDisplay set instead of Display
 			return;
 		}
 		if (!BOOK.AVAILABLE()) {
