@@ -46,20 +46,18 @@ public class Book implements Serializable { //changed book into Book
 		return title;
 	}
 
-
-
-	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
+	public boolean isAvailable() { // method name changed and return statement adjusted
+		return state == State.AVAILABLE;
 	}
 
-
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
+//method name On_loan() changed to onloan() and return statement adjusted
+	public boolean onloan() {
+		return state == State.ON_LOAN;
 	}
 
-
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
+//method name IS_Damanged() changed to isDamanged() and return statement adjusted.
+	public boolean isDamaged() {
+		return State == State.DAMAGED;
 	}
 
 
