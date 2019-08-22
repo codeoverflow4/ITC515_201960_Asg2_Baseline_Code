@@ -61,28 +61,28 @@ public class Book implements Serializable { //changed book into Book
 	}
 
 
-	public void Borrow() {
-		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
+	public void onBorrow() { // method name Borrow() changed to onBorrow()
+		if (state.equals(State.AVAILABLE)) {// state object and enum name adjusted
+			state = State.ON_LOAN;
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", state));// state object is set instead of State enum
 		}
 
 	}
 
 
-	public void Return(boolean DAMAGED) {
-		if (State.equals(STATE.ON_LOAN)) {
-			if (DAMAGED) {
-				State = STATE.DAMAGED;
+	public void onReturn(boolean damaged) { //Returned renamed into onReturn and variable DAMAGED into damaged
+		if (state.equals(State.ON_LOAN)) {// state enum  and state object adjusted
+			if (damaged) {
+				state = State.DAMAGED;
 			}
 			else {
-				State = STATE.AVAILABLE;
+				state = State.AVAILABLE;
 			}
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state)); // state object is set instead of State enum
 		}
 	}
 
