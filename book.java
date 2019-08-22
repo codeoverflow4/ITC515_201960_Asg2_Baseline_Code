@@ -87,12 +87,12 @@ public class Book implements Serializable { //changed book into Book
 	}
 
 
-	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
+	public void onRepair() { // Repair() renamed into onRepair()
+		if (state.equals(State.DAMAGED)) { // state object and State enum adjusted
+			state = State.AVAILABLE;
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state)); // State object placed
 		}
 	}
 
