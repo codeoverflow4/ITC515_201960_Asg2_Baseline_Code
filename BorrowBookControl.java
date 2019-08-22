@@ -12,8 +12,9 @@ public class BorrowBookControl { //this is testing 4
 
 	private Library library; //library and LIBRARY renamed but  LIbrary class is missing
 	private Member member; // Member class name and member object name adjusted but Member class is missing
-	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
-	private CONTROL_STATE State;
+	private enum ControlState { //enum name CONTROL_STATE renamed into ControlState
+		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	private ControlState state; //CONTROL_STATE renamed to ControlState and variable State renamed into state
 
 	private List<book> PENDING;
 	private List<loan> COMPLETED;
