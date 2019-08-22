@@ -46,14 +46,14 @@ public class BorrowBookControl { //this is testing 4
 			borrowBookUI.setDisplay("Invalid memberId"); // display to setDisplay
 			return;
 		}
-		if (LIBRARY.MEMBER_CAN_BORROW(M)) {
-			PENDING = new ArrayList<>();
-			UI.Set_State(BorrowBookUI.UI_STATE.SCANNING);
-			State = CONTROL_STATE.SCANNING; }
+		if (library.canMemberBorrow(memberId)) { //MEMBER_CAN_BORROW method is renamed into more suitable name canMemberBorrow
+			pending = new ArrayList<>();
+			borrowBookUI.setState(BorrowBookUI.UISTATE.SCANNING);
+			state = ControlState.SCANNING; }
 		else
-		{
-			UI.Display("Member cannot borrow at this time");
-			UI.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
+		 //setDisplay and setState method name are set instead of Display and Set_State respectively
+			borrowBookUI.setDisplay("Member cannot borrow at this time");
+			borrowBookUI.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 
 
 	public void Scanned(int bookId) {
