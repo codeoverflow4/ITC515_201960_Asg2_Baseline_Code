@@ -55,12 +55,12 @@ public class BorrowBookUI {
 			case READY:
 				String memberInput = input("Swipe member card (press <enter> to cancel): "); //MEM_STR renamed into memberInput as it is more applicable
 				if (memberInput.length() == 0) {
-					borrowBookControl.cancel();
+					borrowBookControl.onCancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+					int memberID = Integer.valueOf(memberInput).intValue();
+					borrowBookControl.onSwiped(memberID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
