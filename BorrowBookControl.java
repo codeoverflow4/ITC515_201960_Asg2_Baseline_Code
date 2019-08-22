@@ -21,14 +21,14 @@ public class BorrowBookControl { //this is testing 4
 	private Book book;//book is renamed into Book class and variable name BOOK is renamed into book
 
 
-	public BorrowBookControl() {
-		this.LIBRARY = LIBRARY.INSTANCE();
-		State = CONTROL_STATE.INITIALISED;
+	public BorrowBookControl() { //library, state and  ControlState are adjusted on corresponds
+		this.library = library.getInstance(); //INSTANCE() is replaced with getInstance()
+		state = ControlState.INITIALISED;
 	}
 
 
-	public void setUI(BorrowBookUI ui) {
-		if (!State.equals(CONTROL_STATE.INITIALISED))
+	public void setUI(BorrowBookUI borrowBookUI) { //variable name ui is replaced with borrowBookUI
+		if (!state.equals(ControlState.INITIALISED))
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 
 		this.UI = ui;
