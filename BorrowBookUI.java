@@ -109,13 +109,13 @@ public class BorrowBookUI {
 
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + uIStaTe); // state to UIState
 			}
 		}
 	}
 
 
-	public void Display(Object object) {
+	public void setDisplay(Object object) { //renamed method name Display into setDisplay as it is setting the values passed by its referencer
 		output(object);
 	}
 
