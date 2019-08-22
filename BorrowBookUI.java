@@ -53,9 +53,9 @@ public class BorrowBookUI {
 
 
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+				String memberInput = input("Swipe member card (press <enter> to cancel): "); //MEM_STR renamed into memberInput as it is more applicable
+				if (memberInput.length() == 0) {
+					borrowBookControl.cancel();
 					break;
 				}
 				try {
