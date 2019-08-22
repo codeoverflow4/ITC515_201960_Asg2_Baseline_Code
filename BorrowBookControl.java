@@ -81,18 +81,18 @@ public class BorrowBookControl { //this is testing 4
 	}
 
 
-	public void Complete() {
-		if (PENDING.size() == 0) {
-			cancel();
+	public void onComplete() {//method name Complete is changed into onComplete, Loan class is missing
+		if (pending.isEmpty() == 0) {//Usage of .size() == 0 can be replaced with .isEmpty()
+			onCancel(); //appropriate method name is called
 		}
 		else {
-			UI.Display("\nFinal Borrowing List");
-			for (book B : PENDING) {
-				UI.Display(B.toString());
+			borrowBookUI.setDisplay("\nFinal Borrowing List");
+			for (Book book : pending) {
+				borrowBookUI.setDisplay(book.toString());
 			}
-			COMPLETED = new ArrayList<loan>();
-			UI.Set_State(BorrowBookUI.UI_STATE.FINALISING);
-			State = CONTROL_STATE.FINALISING;
+			completed = new ArrayList<loan>();
+			borrowBookUI.setState(BorrowBookUI.UIState.FINALISING);
+			state = ControlState.FINALISING;
 		}
 	}
 
