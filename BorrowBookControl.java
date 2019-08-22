@@ -97,13 +97,13 @@ public class BorrowBookControl { //this is testing 4
 	}
 
 
-	public void Commit_LOans() {
-		if (!State.equals(CONTROL_STATE.FINALISING)) {
+	public void onCommitLoans() { //method name Commit_LOans is changed into onCommitLoans, Loan class is missing, UI renamed into borrowBookUI, CONTROL_STATE into ControlState
+		if (!state.equals(ControlState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}
-		for (book B : PENDING) {
-			loan LOAN = LIBRARY.ISSUE_LAON(B, M);
-			COMPLETED.add(LOAN);
+		for (Book book : pending) {
+			Loan loan = library.issueLoan(book, member);//ISSUE_LAON method changed into issueLoan method
+			completed.add(loan);
 		}
 		UI.Display("Completed Loan Slip");
 		for (loan LOAN : COMPLETED) {
