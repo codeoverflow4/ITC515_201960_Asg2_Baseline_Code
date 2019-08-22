@@ -105,18 +105,18 @@ public class BorrowBookControl { //this is testing 4
 			Loan loan = library.issueLoan(book, member);//ISSUE_LAON method changed into issueLoan method
 			completed.add(loan);
 		}
-		UI.Display("Completed Loan Slip");
-		for (loan LOAN : COMPLETED) {
-			UI.Display(LOAN.toString());
+		Borrowing.setDisplay("Completed Loan Slip");
+		for (Loan loan : completed) {
+			borrowBookUI.setDisplay(loan.toString()); //setDisplay adjusted
 		}
-		UI.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
-		State = CONTROL_STATE.COMPLETED;
+		borrowBookUI.setState(BorrowBookUI.UIState.COMPLETED); //setState adjusted
+		state = ControlState.COMPLETED;
 	}
 
 
-	public void cancel() {
-		UI.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
-		State = CONTROL_STATE.CANCELLED;
+	public void onCancel() {//method name cancel is changed into onCancel, UI renamed into borrowBookUI, CONTROL_STATE into ControlState
+		borrowBookUI.setState(BorrowBookUI.UIState.CANCELLED);
+		state = ControlState.CANCELLED;
 	}
 
 
