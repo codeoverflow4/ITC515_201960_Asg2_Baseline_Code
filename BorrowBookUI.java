@@ -12,8 +12,8 @@ public class BorrowBookUI {
 		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
 	private BorrowBookControl borrowBookControl; //object name CONTROL is replaced with borrowBookControl
-	private Scanner input;
-	private UI_STATE StaTe;
+	private Scanner scanner; //input is replaced with scanner as it is better that object name correspond to Reference name (i.e. Scanner class)
+	private UIState uIState;//Refernce name and object name changed
 
 
 	public BorrowBookUI(BorrowBookControl control) {
