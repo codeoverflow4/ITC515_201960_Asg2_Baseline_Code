@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class BorrowBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	public static enum UIState { //enum name UI_STATE changed to UIState
+		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
-	private BorrowBookControl CONTROL;
+	private BorrowBookControl borrowBookControl; //object name CONTROL is replaced with borrowBookControl
 	private Scanner input;
 	private UI_STATE StaTe;
 
