@@ -81,8 +81,8 @@ public class BorrowBookUI {
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bID = Integer.valueOf(bookInput).intValue(); //renamed BiD into bId
+					borrowBookControl.onScanned(bID);
 
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -91,12 +91,12 @@ public class BorrowBookUI {
 
 
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String answerInput = input("Commit loans? (Y/N): ");
+				if (answerInput.toUpperCase().equals("N")) {
+					borrowBookControl.onCancel();
 
 				} else {
-					CONTROL.Commit_LOans();
+					borrowBookControl.onCommitLoans();
 					input("Press <any key> to complete ");
 				}
 				break;
