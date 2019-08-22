@@ -66,17 +66,17 @@ public class BorrowBookControl { //this is testing 4
 			borrowBookUI.setDisplay("Invalid bookId");//setDisplay set instead of Display
 			return;
 		}
-		if (!BOOK.AVAILABLE()) {
-			UI.Display("Book cannot be borrowed");
+		if (!book.isAvailable()) { //AVAILABLE() is renamed into isAvailable()
+			borrowBookUI.setDisplay("Book cannot be borrowed");
 			return;
 		}
-		PENDING.add(BOOK);
-		for (book B : PENDING) {
-			UI.Display(B.toString());
+		pending.add(book);
+		for (Book book : pending) {
+			borrowBookUI.setDisplay(book.toString());
 		}
-		if (LIBRARY.Loans_Remaining_For_Member(M) - PENDING.size() == 0) {
-			UI.Display("Loan limit reached");
-			Complete();
+		if (library.getLoansRemainingForMember(member) - pending.size() == 0) { //Loans_Remaining_For_Member is replaced with method getLoansRemainingForMember
+			borrowBookUI.setDisplay("Loan limit reached");
+			onComplete(); //appropriate method name is called
 		}
 	}
 
