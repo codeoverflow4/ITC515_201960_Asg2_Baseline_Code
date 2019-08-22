@@ -16,9 +16,9 @@ public class BorrowBookControl { //this is testing 4
 		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private ControlState state; //CONTROL_STATE renamed to ControlState and variable State renamed into state
 
-	private List<book> PENDING;
-	private List<loan> COMPLETED;
-	private book BOOK;
+	private List<Book> pending; // book renamed into Book  and PENDING renamed into lowercase
+	private List<Loan> completed; //loan renamed into Loan  and COMPLETED renamed into lowercase,
+	private Book book;//book is renamed into Book class and variable name BOOK is renamed into book
 
 
 	public BorrowBookControl() {
