@@ -16,11 +16,11 @@ public class BorrowBookUI {
 	private UIState uIState;//Refernce name and object name changed
 
 
-	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
-		input = new Scanner(System.in);
-		StaTe = UI_STATE.INITIALISED;
-		control.setUI(this);
+	public BorrowBookUI(BorrowBookControl borrowBookControl) { //control renamed to borrowBookControl, StaTe renamed to uIState and UI_STATE into UIState
+		this.borrowBookControl = borrowBookControl;
+		scanner = new Scanner(System.in);
+		uIState = UIState.INITIALISED;
+		borrowBookControl.setUI(this);
 	}
 
 
