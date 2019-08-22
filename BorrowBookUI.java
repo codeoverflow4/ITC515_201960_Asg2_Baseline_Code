@@ -70,14 +70,14 @@ public class BorrowBookUI {
 
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				borrowBookControl.onCancel();
 				break;
 
 
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String bookInput = input("Scan Book (<enter> completes): ");
+				if (bookInput.length() == 0) {
+					borrowBookControl.onComplete();
 					break;
 				}
 				try {
