@@ -20,27 +20,27 @@ import java.util.Map;
 public class library implements Serializable {
 	
 	//libraryFile change into LIBRARY_FILE
-	private static final String libraryFile = "library.obj";
+	private static final String LIBRARY_FILE = "library.obj";
 	//libraryFile change into LOAN_LIMIT
-	private static final int loanLimit = 2;
+	private static final int LOAN_LIMIT = 2;
 	//libraryFile change into LOAN_PERIOD
-	private static final int loanPeriod = 2;
+	private static final int LOAN_PERIOD = 2;
 	//libraryFile change into FINE_PER_DATE
-	private static final double finePerDay = 1.0;
+	private static final double FINE_PER_DATE = 1.0;
 	//libraryFile change into MAX_FINES_OWED
-	private static final double maxFinesOwed = 1.0;
+	private static final double MAX_FINES_OWED = 1.0;
 	//libraryFile change into DAMAGE_FEE
-	private static final double damageFee = 2.0;
+	private static final double DAMAGE_FEE = 2.0;
 	
-	private static library SeLf;
+	private static library self;
 	//BOOK_ID change into bookId
-	private int BOOK_ID;
+	private int bookId;
 	//MEMBER_ID change into memberId
-	private int MEMBER_ID;
+	private int memberId;
 	//LOAN_ID change into loan_Id
-	private int LOAN_ID;
+	private int loan_Id;
 	//LOAN_DATE change loadDate
-	private Date LOAN_DATE;
+	private Date loadDate;
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;
@@ -51,37 +51,37 @@ public class library implements Serializable {
 
 	private library() {
  		//CATALOG change into catalog
-		CATALOG = new HashMap<>();
+		catalog = new HashMap<>();
  		//MEMBERS change into members
-		MEMBERS = new HashMap<>();
+		members = new HashMap<>();
 		//LOANS change into loans
-		LOANS = new HashMap<>();
+		loans = new HashMap<>();
 		//change into currentState
-		CURRENT_LOANS = new HashMap<>();
+		currentState = new HashMap<>();
 		//damagedBooks
-		DAMAGED_BOOKS = new HashMap<>();
+		damagedBooks = new HashMap<>();
 		//bookId
-		BOOK_ID = 1;
+		bookId = 1;
 		//MemberId
-		MEMBER_ID = 1;	
+		MemberId = 1;	
 		//LoadId
-		LOAN_ID = 1;		
+		LoadId = 1;		
 	}
 
 	
 	public static synchronized library INSTANCE() {	
 		//SeLf change into self
-		if (SeLf == null) {
+		if (self == null) {
 			
 			//PATH change into path
-			Path PATH = Paths.get(libraryFile);			
+			Path path = path.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
 					//SeLf change into self
-					SeLf = (library) LiF.readObject();
+					self = (library) LiF.readObject();
 					//Calendar change into calendar and Set_dATE change into setDate and LOAN_DATE change into loanDate
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
+					calendar.INSTANCE().setDate(SeLf.loanDate);
 					LiF.close();
 				}
 				catch (Exception e) {
@@ -89,16 +89,16 @@ public class library implements Serializable {
 				}
 			}
 			//SeLf change into self
-			else SeLf = new library();
+			else self = new library();
 		}
 		//SeLf change into self
-		return SeLf;
+		return self;
 	}
 
 	
 	public static synchronized void SAVE() {
 		//changed SeLf Into self
-		if (SeLf != null) {
+		if (self != null) {
 			// changed SeLf Into self and LOAN_DATE change into loanDate
 			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
@@ -113,31 +113,31 @@ public class library implements Serializable {
 	}
 
 	//BookID change into bookId
-	public int BookID() {
+	public int bookId() {
 		return BOOK_ID;
 	}
 	
 	
-	public int MemberID() {
+	public int memberId() {
 		//MEMBER_ID change into memberId
 		return MEMBER_ID;
 	}
 	
-	//BookID change into bookId
+	//NextBID change into nextBid
 	private int NextBID() {
-		//MEMBER_ID change into memberId
+	
 		return BOOK_ID++;
 	}
 
 	//NextMID change into nextMid
-	private int NextMID() {
+	private int nextMid() {
 		//MEMBER_ID change into memberId
 		return MEMBER_ID++;
 	}
 
 	//NextLID change into nextLid
-	private int NextLID() {
-		//LOAN_ID change into loanId
+	private int nextLid() {
+		
 		return LOAN_ID++;
 	}
 
@@ -164,14 +164,14 @@ public class library implements Serializable {
 	}
 
 	//Add_book change ito AddBook
-	public book Add_book(String a, String t, String c) {		
+	public book AddBook(String a, String t, String c) {		
 		book b = new book(a, t, c, NextBID());
 		CATALOG.put(b.ID(), b);		
 		return b;
 	}
 
 	//MEMBER change ito Member
-	public member MEMBER(int memberId) {
+	public member Member(int memberId) {
 		if (MEMBERS.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
 		return null;
@@ -185,7 +185,7 @@ public class library implements Serializable {
 	}
 
 	//LOAN_LIMIT change into LoanLimit
-	public int LOAN_LIMIT() {
+	public int LoanLimit() {
 		return loanLimit;
 	}
 
