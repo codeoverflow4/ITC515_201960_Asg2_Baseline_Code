@@ -35,7 +35,7 @@ public class ReturnBookControl {
 			Ui.display("Invalid Book Id");
 			return;
 		}
-		if (!currentBook.On_loan()) {//CUR_book named as currentBook
+		if (!currentBook.On_loan()) { //CUR_book named as currentBook
 			Ui.display("Book has not been borrowed");
 			return;
 		}		
