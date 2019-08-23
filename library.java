@@ -97,7 +97,9 @@ public class library implements Serializable {
 
 	
 	public static synchronized void SAVE() {
+		//changed SeLf Into self
 		if (SeLf != null) {
+			// changed SeLf Into self and LOAN_DATE change into loanDate
 			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
 				LoF.writeObject(SeLf);
@@ -110,28 +112,32 @@ public class library implements Serializable {
 		}
 	}
 
-	
+	//BookID change into bookId
 	public int BookID() {
 		return BOOK_ID;
 	}
 	
 	
 	public int MemberID() {
+		//MEMBER_ID change into memberId
 		return MEMBER_ID;
 	}
 	
-	
+	//BookID change into bookId
 	private int NextBID() {
+		//MEMBER_ID change into memberId
 		return BOOK_ID++;
 	}
 
-	
+	//NextMID change into nextMid
 	private int NextMID() {
+		//MEMBER_ID change into memberId
 		return MEMBER_ID++;
 	}
 
-	
+	//NextLID change into nextLid
 	private int NextLID() {
+		//LOAN_ID change into loanId
 		return LOAN_ID++;
 	}
 
@@ -157,14 +163,14 @@ public class library implements Serializable {
 		return member;
 	}
 
-	
+	//Add_book change ito AddBook
 	public book Add_book(String a, String t, String c) {		
 		book b = new book(a, t, c, NextBID());
 		CATALOG.put(b.ID(), b);		
 		return b;
 	}
 
-	
+	//MEMBER change ito Member
 	public member MEMBER(int memberId) {
 		if (MEMBERS.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
@@ -178,7 +184,7 @@ public class library implements Serializable {
 		return null;
 	}
 
-	
+	//LOAN_LIMIT change into LoanLimit
 	public int LOAN_LIMIT() {
 		return loanLimit;
 	}
