@@ -39,7 +39,7 @@ public class FixBookUI {
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
-			//StAtE change as a currentState because its meaningful thats why addedthe current word here.
+			//StAtE change as a currentState because its meaningful thats why added to the current word here.
 			switch (StAtE) {
 			
 			case READY:
@@ -65,20 +65,28 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
+					//AnS change as a answer becuase it gives a meanininful
 				String AnS = input("Fix Book? (Y/N) : ");
+					//FiX change as a fix
 				boolean FiX = false;
+					//Agian this needs to be change AnS into answer
 				if (AnS.toUpperCase().equals("Y")) {
+					//FiX has to be change again as a fix
 					FiX = true;
 				}
+					//As we did before This Also Needs to Updated just like control.fixBook(fix)
 				CoNtRoL.FIX_Book(FiX);
 				break;
 								
 			case COMPLETED:
+					//added this forword to output [this.output] like that way
 				output("Fixing process complete");
 				return;
 			
 			default:
+					//again updated infront of th output just like  this.output
 				output("Unhandled state");
+					//StAtE we already updated before as a currentState
 				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
 			
 			}		
