@@ -50,24 +50,37 @@ public class library implements Serializable {
 	
 
 	private library() {
+ 		//CATALOG change into catalog
 		CATALOG = new HashMap<>();
+ 		//MEMBERS change into members
 		MEMBERS = new HashMap<>();
+		//LOANS change into loans
 		LOANS = new HashMap<>();
+		//change into currentState
 		CURRENT_LOANS = new HashMap<>();
+		//damagedBooks
 		DAMAGED_BOOKS = new HashMap<>();
+		//bookId
 		BOOK_ID = 1;
-		MEMBER_ID = 1;		
+		//MemberId
+		MEMBER_ID = 1;	
+		//LoadId
 		LOAN_ID = 1;		
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized library INSTANCE() {	
+		//SeLf change into self
 		if (SeLf == null) {
+			
+			//PATH change into path
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
+					//SeLf change into self
 					SeLf = (library) LiF.readObject();
+					//Calendar change into calendar and Set_dATE change into setDate and LOAN_DATE change into loanDate
 					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
 					LiF.close();
 				}
@@ -75,8 +88,10 @@ public class library implements Serializable {
 					throw new RuntimeException(e);
 				}
 			}
+			//SeLf change into self
 			else SeLf = new library();
 		}
+		//SeLf change into self
 		return SeLf;
 	}
 
