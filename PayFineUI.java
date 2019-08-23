@@ -33,13 +33,13 @@ public class PayFineUI {
 			switch (state) { //StAtE object renamed as state
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
+				String memberString = input("Swipe member card (press <enter> to cancel): ");//String name is changed as memberString
+				if (memberString.length() == 0) { //String name is changed
 					Control.cancel(); //classes and ojects names has been changed
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
+					int Member_ID = Integer.valueOf(memberString).intValue();
 					Control.Card_Swiped(Member_ID);//class name has been changed
 				}
 				catch (NumberFormatException e) {
@@ -49,8 +49,8 @@ public class PayFineUI {
 				
 			case PAYING:
 				double amount = 0; //vaiable name changed as amount
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
+				String amountString = input("Enter amount (<Enter> cancels) : "); //Amt_Str string name changed as amountString
+				if (amountString.length() == 0) {
 					Control.cancel(); //classes and ojects names has been changed
 					break;
 				}
@@ -75,7 +75,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);//StAtE changed as state		
 			
 			}		
 		}		
@@ -92,7 +92,7 @@ public class PayFineUI {
 		System.out.println(object);
 	}	
 			
-	//class name has been changed
+	//class name has been changed as Display
 	public void Display (Object object) {
 		output(object);
 	}
