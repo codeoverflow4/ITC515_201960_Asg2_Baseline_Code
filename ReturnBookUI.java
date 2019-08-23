@@ -24,7 +24,7 @@ public class ReturnBookUI {
 		
 		while (true) {
 			
-			switch (state) {//parameter name changed as state
+			switch (state) { //parameter name changed as state
 			
 			case INITIALISED:
 				break;
