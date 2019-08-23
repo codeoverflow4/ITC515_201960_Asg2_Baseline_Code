@@ -3,7 +3,7 @@ public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	private ControlState sTaTe; //CONTROL_STATE class name changed as ControlState //State object name changed as state
 	
 	private library library; //Object  name changed as library
 	private loan currentLoan; //Object  name changed as currentLoan
@@ -26,22 +26,22 @@ public class ReturnBookControl {
 
 	//Class name has changed as BookScanned
 	public void BookScanned(int Book_ID) {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+		if (!state.equals(CONTROL_STATE.READY)) {//State object name changed as state
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book CUR_book = library.Book(Book_ID); //library name changed
+		book currentBook = library.Book(Book_ID); //library name changed //CUR_book named as currentBook
 		
-		if (CUR_book == null) {
+		if (currentBook == null) {//CUR_book named as currentBook
 			Ui.display("Invalid Book Id");
 			return;
 		}
-		if (!CUR_book.On_loan()) {
+		if (!currentBook.On_loan()) {//CUR_book named as currentBook
 			Ui.display("Book has not been borrowed");
 			return;
 		}		
 		currentLoan = library.LOAN_BY_BOOK_ID(Book_ID);//object names has been changed
 		double Over_Due_Fine = 0.0;
-		if (currentLoan.Over_Due()) {//object names has been changed as currentLoan and Over_Due
+		if (currentLoan.Over_Due()) {//object names has been changed as currentLoan
 			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(currentLoan);//parameter name has changed
 		}
 		Ui.display("Inspecting");
