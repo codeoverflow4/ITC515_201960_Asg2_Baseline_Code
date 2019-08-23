@@ -1,20 +1,21 @@
+// author :RamithaSilva mediator :RushanDevanga Reviewer:SandesMagar
 public class PayFineControl {
 	
 	private PayFineUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE StAtE;
 	
-	private library LiBrArY;
-	private member MeMbEr;
+	private library Library; //LiBrArY object renamed as Library
+	private member Member;//MeMbEr object renamed as Member
 
-
+	//Library object name has been changed
 	public PayFineControl() {
-		this.LiBrArY = LiBrArY.INSTANCE();
+		this.Library = Library.INSTANCE();
 		StAtE = CONTROL_STATE.INITIALISED;
 	}
 	
-	
-	public void Set_UI(PayFineUI ui) {
+	//Class name changed as SetUi
+	public void SetUi(PayFineUI ui) {
 		if (!StAtE.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -23,41 +24,44 @@ public class PayFineControl {
 		StAtE = CONTROL_STATE.READY;		
 	}
 
-
-	public void Card_Swiped(int memberId) {
+	//Class name changed as CardSwiped
+	public void CardSwiped(int memberId) {
 		if (!StAtE.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
-		MeMbEr = LiBrArY.MEMBER(memberId);
+		Member = Library.MEMBER(memberId); //MeMbEr objecct and LiBrArY object names have been renamed
 		
-		if (MeMbEr == null) {
+		if (MEMBER == null) { //MeMbEr has been renamed
 			Ui.DiSplAY("Invalid Member Id");
 			return;
 		}
-		Ui.DiSplAY(MeMbEr.toString());
+		Ui.DiSplAY(Member.toString()); //Member has been renamed
 		Ui.Set_State(PayFineUI.UI_STATE.PAYING);
 		StAtE = CONTROL_STATE.PAYING;
 	}
 	
-	
-	public void CaNcEl() {
+	//Class name renamed as CancelState
+	public void CancelState() {
 		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
 		StAtE = CONTROL_STATE.CANCELLED;
 	}
 
-
-	public double PaY_FiNe(double AmOuNt) {
+	//Class name renamed as PayFine and AmOuNt parameter renamed as amount
+	public double PayFine(double amount) {
 		if (!StAtE.equals(CONTROL_STATE.PAYING)) {
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
-		}	
-		double ChAnGe = MeMbEr.Pay_Fine(AmOuNt);
-		if (ChAnGe > 0) {
-			Ui.DiSplAY(String.format("Change: $%.2f", ChAnGe));
 		}
-		Ui.DiSplAY(MeMbEr.toString());
+		//ChAnGe parameter renamed as change
+		//Member class name has been changed
+		double change = Member.PayFine(amount);
+		if (change > 0) {//ChAnGe parameter renamed as change
+			Ui.DiSplAY(String.format("Change: $%.2f", change)); //ChAnGe parameter renamed as change
+		}
+		//Member object name has been changed
+		Ui.DiSplAY(Member.toString());
 		Ui.Set_State(PayFineUI.UI_STATE.COMPLETED);
 		StAtE = CONTROL_STATE.COMPLETED;
-		return ChAnGe;
+		return change;//ChAnGe parameter renamed as change
 	}
 	
 
