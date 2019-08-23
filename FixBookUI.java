@@ -2,92 +2,92 @@
 import java.util.Scanner;
 
 //FixBookUI change as a Fixbookui 
-public class FixBookUI { 
+public class Fixbookui  { 
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };
 	//UI_STATE change as a UiState (Underscore seperated class are not acceptable and uppercase letter and to be in camelBack)
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl control;
 	//CoNtRoL change as a control All Variable are starting With Lowe Case and To Be CamelBack
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState state;
 	//There are two changes here UI_STATE as a UiState and StAtE as a state
 
 	
 	////FixBookUI change as a Fixbookui
-	public FixBookUI(FixBookControl control) {
+	public Fixbookui(FixBookControl control) {
 		this.CoNtRoL = control;
 		//CoNtRoL has to be change control
 		
 		input = new Scanner(System.in);
 		//StAtE change as a state
-		StAtE = UI_STATE.INITIALISED;
+		state = UiState.INITIALISED;
 		
-		control.Set_Ui(this);
+		control.SetUi(this);
 		
 	}
 
         //Set_State(UI_STATE state) change as a setstate(UiState state)
-	public void Set_State(UI_STATE state) {
+	public void setstate(UiState state) {
 		//StAtE change as a state
-		this.StAtE = state;
+		this.state = state;
 	}
 
 	//RuN change as a run 
-	public void RuN() {
+	public void run() {
 		//this needs to be updtaed [this.output]
-		output("Fix Book Use Case UI\n");
+		this.output("Fix Book Use Case UI\n");
 		
 		while (true) {
 			//StAtE change as a currentState because its meaningful thats why added to the current word here.
-			switch (StAtE) {
+			switch (currentState) {
 			
 			case READY:
 				//Book_STR change as a bookScan	
-				String Book_STR = input("Scan Book (<enter> completes): ");
+				String bookScan = input("Scan Book (<enter> completes): ");
 					//Book_STR.length change as bookScan.lenght
-				if (Book_STR.length() == 0) {
+				if (bookScan.length() == 0) {
 					//CoNtRoL.SCannING_COMplete  change as a this.control.completeScanning
-					CoNtRoL.SCannING_COMplete();
+					this.control.completeScanning();
 				}
 				else {
 					try {
 						//Book_ID change as a bookId and (Book_STR)change as a bookScan
-						int Book_ID = Integer.valueOf(Book_STR).intValue();
+						int bookId = Integer.valueOf(bookScan).intValue();
 						//CoNtRoL.Book_scanned(Book_ID) change as a this.control.scanBook(bookId)
-						CoNtRoL.Book_scanned(Book_ID);
+						this.control.scanBook(bookId);
 					}
 					catch (NumberFormatException e) {
 						//updated with this.output...
-						output("Invalid bookId");
+						this.output("Invalid bookId");
 					}
 				}
 				break;	
 				
 			case FIXING:
 					//AnS change as a answer becuase it gives a meanininful
-				String AnS = input("Fix Book? (Y/N) : ");
+				String answer = input("Fix Book? (Y/N) : ");
 					//FiX change as a fix
-				boolean FiX = false;
+				boolean fix = false;
 					//Agian this needs to be change AnS into answer
-				if (AnS.toUpperCase().equals("Y")) {
+				if (answer.toUpperCase().equals("Y")) {
 					//FiX has to be change again as a fix
-					FiX = true;
+					fix = true;
 				}
 					//As we did before This Also Needs to Updated just like control.fixBook(fix)
-				CoNtRoL.FIX_Book(FiX);
+				control.fixBook(FiX);
 				break;
 								
 			case COMPLETED:
 					//added this forword to output [this.output] like that way
-				output("Fixing process complete");
+				this.output("Fixing process complete");
 				return;
 			
 			default:
 					//again updated infront of th output just like  this.output
-				output("Unhandled state");
+				this.output("Unhandled state");
 					//StAtE we already updated before as a currentState
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
 			
 			}		
 		}
@@ -99,7 +99,7 @@ public class FixBookUI {
 	
 		System.out.print(prompt);
 		//added (this) before input it will updated as a this.input....
-		return input.nextLine();
+		this.return input.nextLine();
 	}	
 		
 		
@@ -110,7 +110,7 @@ public class FixBookUI {
 
 	public void display(Object object) {
 		//added (this) before output 
-		output(object);
+		this.output(object);
 	}
 	
 	
