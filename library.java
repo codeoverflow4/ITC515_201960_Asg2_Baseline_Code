@@ -1,3 +1,4 @@
+//Author -Rushan Mediator- Sandesh , Reviewer - osanda
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,19 +15,31 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
+
+// library change into Library should be meaningful, all upper case, and underscore separated. 
 public class library implements Serializable {
 	
+	//libraryFile change into LIBRARY_FILE
 	private static final String libraryFile = "library.obj";
+	//libraryFile change into LOAN_LIMIT
 	private static final int loanLimit = 2;
+	//libraryFile change into LOAN_PERIOD
 	private static final int loanPeriod = 2;
+	//libraryFile change into FINE_PER_DATE
 	private static final double finePerDay = 1.0;
+	//libraryFile change into MAX_FINES_OWED
 	private static final double maxFinesOwed = 1.0;
+	//libraryFile change into DAMAGE_FEE
 	private static final double damageFee = 2.0;
 	
 	private static library SeLf;
+	//BOOK_ID change into bookId
 	private int BOOK_ID;
+	//MEMBER_ID change into memberId
 	private int MEMBER_ID;
+	//LOAN_ID change into loan_Id
 	private int LOAN_ID;
+	//LOAN_DATE change loadDate
 	private Date LOAN_DATE;
 	
 	private Map<Integer, book> CATALOG;
