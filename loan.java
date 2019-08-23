@@ -36,48 +36,49 @@ public class loan implements Serializable {
 	}
 
 	
-	public boolean OVer_Due() {
-		return state == LOAN_STATE.OVER_DUE;
+	public boolean overDue() {//Change method name OVer_Due into overDue
+		return loanState == LoanState.OVER_DUE;
 	}
 
 	
-	public Integer ID() {
-		return ID;
+	public Integer getId() {//Change method name ID to getId
+		return id;
 	}
 
 
-	public Date Get_Due_Date() {
-		return D;
+	public Date getDueDate() {//Rename Get_Due_Date into getDueDate
+		return dueDate;// Apply dueDate name change
 	}
+
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");//Rename SDF into simpleDateFormat for meaningful name
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.TITLE()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
-		  .append("  State: ").append(state);		
-		return sb.toString();
+		StringBuilder stringBuilder = new StringBuilder();//Rename sb into stringBuilder for meaningful name
+		stringBuilder.append("Loan:  ").append(getId()).append("\n")//Apply getId method name
+		  .append("  Borrower ").append(member.getId()).append(" : ")//Apply getId method name for member
+		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")//Apply changed getFirstName,getLastName method for member
+		  .append("  Book ").append(book.getBookId()).append(" : " )//Apply getBookId method name for book
+		  .append(book.getTitle()).append("\n")//Apply getTitle method name for book
+		  .append("  DueDate: ").append(simpleDateFormat.format(D)).append("\n")
+		  .append("  State: ").append(loanState); // apply loanState name change	
+		return stringBuilder.toString();
 	}
 
 
 	public member Member() {
-		return M;
+		return member; //variable name changed M to member
 	}
 
 
 	public book Book() {
-		return B;
+		return book; //variable name changed B to book
 	}
 
 
-	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+	public void Discharge() {//Method name corrected as Discharge
+		loanState = LoanState.DISCHARGED;	// apply loanState name change	
 	}
 
 }
