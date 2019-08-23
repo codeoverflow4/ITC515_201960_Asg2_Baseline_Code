@@ -45,29 +45,29 @@ public class FixBookControl {
 			return;
 		}
 		UI.display(currentBook.toString());//Apply name changes
-		UI.setState(FixBookUI.UI_STATE.FIXING);// Rename Set_State into setState to remove Underscore
+		UI.setState(FixBookUI.UISate.FIXING);// Rename Set_State into setState to remove Underscore
 		controlState = ControlState.FIXING;//Apply name changes		
 	}
 
 
-	public void FIX_Book(boolean MUST_fix) {
-		if (!StAtE.equals(CONTROL_STATE.FIXING)) {
+	public void fixBook(boolean mustFix) {//Method Name change, variable name changed MUST_fix to mustFix
+		if (!controlState.equals(ControlState.FIXING)) {//Apply name changes	
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
-		if (MUST_fix) {
-			LIB.Repair_BOOK(Cur_Book);
+		if (mustFix) {
+			library.repairBOOK(currentBook);//Apply name changes, changed Repair_BOOK to repairBOOK remove Underscore
 		}
-		Cur_Book = null;
-		UI.Set_State(FixBookUI.UI_STATE.READY);
-		StAtE = CONTROL_STATE.READY;		
+		currentBook = null;
+		UI.setState(FixBookUI.UISate.READY);// Rename Set_State into setState to remove Underscore
+		controlState = ControlState.READY;//Apply name changes			
 	}
 
 	
-	public void SCannING_COMplete() {
-		if (!StAtE.equals(CONTROL_STATE.READY)) {
+	public void scanningComplete() { // Rename SCannING_COMplete into scanningComplete to remove Underscore
+		if (!controlState.equals(ControlState.READY)) {//Apply name changes	
 			throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 		}	
-		UI.Set_State(FixBookUI.UI_STATE.COMPLETED);		
+		UI.setState(FixBookUI.UISate.COMPLETED);		
 	}
 
 
