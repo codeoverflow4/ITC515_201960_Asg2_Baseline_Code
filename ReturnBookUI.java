@@ -1,3 +1,4 @@
+// author :RamithaSilva mediator :OsandaRanawera Reviewer:RushanDevanga
 import java.util.Scanner;
 
 
@@ -5,25 +6,25 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl CoNtRoL;
+	private ReturnBookControl control; //object name changed as control
 	private Scanner input;
-	private UI_STATE StATe;
+	private UI_STATE state; //object name changed as state
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control; //control instance name has changed
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
+		state = UI_STATE.INITIALISED;//state object name has changed
 		control.Set_UI(this);
 	}
 
-
-	public void RuN() {		
+	//class name changed as Run
+	public void Run() {		
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) {//parameter name changed as state
 			
 			case INITIALISED:
 				break;
@@ -36,7 +37,7 @@ public class ReturnBookUI {
 				else {
 					try {
 						int Book_Id = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_Id);
+						control.Book_scanned(Book_Id);//object name has changed as control
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -58,7 +59,7 @@ public class ReturnBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state);	//parameter name changed as state		
 			}
 		}
 	}
@@ -80,7 +81,7 @@ public class ReturnBookUI {
 	}
 	
 	public void Set_State(UI_STATE state) {
-		this.StATe = state;
+		this.state = state;//object name changed as state		
 	}
 
 	
