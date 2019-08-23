@@ -20,33 +20,33 @@ public class FixBookControl {
 	
 	
 	
-	public void Set_Ui(FixBookUI ui) {
-		if (!StAtE.equals(CONTROL_STATE.INITIALISED)) {
+	public void SetFixBookUI(FixBookUI fixBookUI) {//Apply name changes,Method name change to SetFixBookUI
+		if (!controlState.equals(ControlState.INITIALISED)) {//Apply name changes
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.UI = ui;
-		ui.Set_State(FixBookUI.UI_STATE.READY);
-		StAtE = CONTROL_STATE.READY;		
+		ui.SetState(FixBookUI.FixBookUISTATE.READY);//removed Underscore from Set_State and renamed UI_STATE to FixBookUISTATE
+		controlState = ControlState.READY;//Apply name changes		
 	}
 
 
-	public void Book_scanned(int bookId) {
-		if (!StAtE.equals(CONTROL_STATE.READY)) {
+	public void BookScanned(int bookId) {//Rename Book_scanned to remove Underscore
+		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		Cur_Book = LIB.Book(bookId);
+		currentBook = library.Book(bookId);//Apply name changes	
 		
-		if (Cur_Book == null) {
+		if (currentBook == null) {//Apply name changes	
 			UI.display("Invalid bookId");
 			return;
 		}
-		if (!Cur_Book.IS_Damaged()) {
+		if (!currentBook.isDamaged()) {//Apply name changes, rename IS_Damaged() to isDamaged()
 			UI.display("Book has not been damaged");
 			return;
 		}
-		UI.display(Cur_Book.toString());
-		UI.Set_State(FixBookUI.UI_STATE.FIXING);
-		StAtE = CONTROL_STATE.FIXING;		
+		UI.display(currentBook.toString());//Apply name changes
+		UI.setState(FixBookUI.UI_STATE.FIXING);// Rename Set_State into setState to remove Underscore
+		controlState = ControlState.FIXING;//Apply name changes		
 	}
 
 
