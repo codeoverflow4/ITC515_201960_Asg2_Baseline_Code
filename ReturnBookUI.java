@@ -81,7 +81,8 @@ public class ReturnBookUI {
 	}
 	
 	public void Set_State(UI_STATE state) {
-		this.state = state;//object name changed as state		
+		//object name changed as state	
+		this.state = state;	
 	}
 
 	
