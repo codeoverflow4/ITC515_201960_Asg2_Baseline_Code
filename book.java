@@ -46,55 +46,53 @@ public class Book implements Serializable { //changed book into Book
 		return title;
 	}
 
+	public boolean isAvailable() { // method name changed and return statement adjusted
+		return state == State.AVAILABLE;
+	}
 
+//method name On_loan() changed to onloan() and return statement adjusted
+	public boolean onloan() {
+		return state == State.ON_LOAN;
+	}
 
-	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
+//method name IS_Damanged() changed to isDamanged() and return statement adjusted.
+	public boolean isDamaged() {
+		return State == State.DAMAGED;
 	}
 
 
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
-	}
-
-
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
-	}
-
-
-	public void Borrow() {
-		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
+	public void onBorrow() { // method name Borrow() changed to onBorrow()
+		if (state.equals(State.AVAILABLE)) {// state object and enum name adjusted
+			state = State.ON_LOAN;
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", state));// state object is set instead of State enum
 		}
 
 	}
 
 
-	public void Return(boolean DAMAGED) {
-		if (State.equals(STATE.ON_LOAN)) {
-			if (DAMAGED) {
-				State = STATE.DAMAGED;
+	public void onReturn(boolean damaged) { //Returned renamed into onReturn and variable DAMAGED into damaged
+		if (state.equals(State.ON_LOAN)) {// state enum  and state object adjusted
+			if (damaged) {
+				state = State.DAMAGED;
 			}
 			else {
-				State = STATE.AVAILABLE;
+				state = State.AVAILABLE;
 			}
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state)); // state object is set instead of State enum
 		}
 	}
 
 
-	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
+	public void onRepair() { // Repair() renamed into onRepair()
+		if (state.equals(State.DAMAGED)) { // state object and State enum adjusted
+			state = State.AVAILABLE;
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", state)); // State object placed
 		}
 	}
 

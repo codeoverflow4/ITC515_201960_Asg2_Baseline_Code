@@ -1,116 +1,122 @@
+/*
+Author - Sandesh Magar
+Mediator- Osanda
+Reviewer - Rushan
+*/
 import java.util.Scanner;
 
 
 public class BorrowBookUI {
-	
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
-	private BorrowBookControl CONTROL;
-	private Scanner input;
-	private UI_STATE StaTe;
+	public static enum UIState { //enum name UI_STATE changed to UIState
+		INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
-	
-	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
-		input = new Scanner(System.in);
-		StaTe = UI_STATE.INITIALISED;
-		control.setUI(this);
+	private BorrowBookControl borrowBookControl; //object name CONTROL is replaced with borrowBookControl
+	private Scanner scanner; //input is replaced with scanner as it is better that object name correspond to Reference name (i.e. Scanner class)
+	private UIState uIState;//Refernce name and object name changed
+
+
+	public BorrowBookUI(BorrowBookControl borrowBookControl) { //control renamed to borrowBookControl, StaTe renamed to uIState and UI_STATE into UIState
+		this.borrowBookControl = borrowBookControl;
+		scanner = new Scanner(System.in);
+		uIState = UIState.INITIALISED;
+		borrowBookControl.setUI(this);
 	}
 
-	
+
 	private String input(String prompt) {
 		System.out.print(prompt);
 		return input.nextLine();
-	}	
-		
-		
+	}
+
+
 	private void output(Object object) {
 		System.out.println(object);
 	}
-	
-			
-	public void Set_State(UI_STATE STATE) {
-		this.StaTe = STATE;
+
+
+	public void setState(UIState uIState) { //Set_State renamed to setState and StaTe renamed to uIState and UI_STATE into UIState
+		this.uIState = uIState;
 	}
 
-	
-	public void run() {
+
+	public void run() {  //control renamed to borrowBookControl, StaTe renamed to uIState and UI_STATE into UIState and as well as methods from BorrowBookContol class are adjusted
 		output("Borrow Book Use Case UI\n");
-		
+
 		while (true) {
-			
-			switch (StaTe) {			
-			
+
+			switch (uIStaTe) {
+
 			case CANCELLED:
 				output("Borrowing Cancelled");
 				return;
 
-				
+
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+				String memberInput = input("Swipe member card (press <enter> to cancel): "); //MEM_STR renamed into memberInput as it is more applicable
+				if (memberInput.length() == 0) {
+					borrowBookControl.onCancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+					int memberID = Integer.valueOf(memberInput).intValue();
+					borrowBookControl.onSwiped(memberID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
 				}
 				break;
 
-				
+
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				borrowBookControl.onCancel();
 				break;
-			
-				
+
+
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String bookInput = input("Scan Book (<enter> completes): ");
+				if (bookInput.length() == 0) {
+					borrowBookControl.onComplete();
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
-					
+					int bID = Integer.valueOf(bookInput).intValue(); //renamed BiD into bId
+					borrowBookControl.onScanned(bID);
+
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
-				} 
+				}
 				break;
-					
-				
+
+
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
-					
+				String answerInput = input("Commit loans? (Y/N): ");
+				if (answerInput.toUpperCase().equals("N")) {
+					borrowBookControl.onCancel();
+
 				} else {
-					CONTROL.Commit_LOans();
+					borrowBookControl.onCommitLoans();
 					input("Press <any key> to complete ");
 				}
 				break;
-				
-				
+
+
 			case COMPLETED:
 				output("Borrowing Completed");
 				return;
-	
-				
+
+
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + uIStaTe); // state to UIState
 			}
-		}		
+		}
 	}
 
 
-	public void Display(Object object) {
-		output(object);		
+	public void setDisplay(Object object) { //renamed method name Display into setDisplay as it is setting the values passed by its referencer
+		output(object);
 	}
 
 
