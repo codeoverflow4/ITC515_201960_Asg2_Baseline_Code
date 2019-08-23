@@ -1,3 +1,8 @@
+/* 
+Auther: Osanda
+Reviewer : Ramitha
+Mediator : Rushan
+*/
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -5,28 +10,28 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class loan implements Serializable {
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED };// enum name change LOAN_STATE to LoanState
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
+	private int loanId;//Change variable name ID into loanId
+	private book book;//Change variable name B into book
+	private member member;//Change variable name M into member
+	private Date dueDate;//Change variable name D into dueDate
+	private LoanState loanState; //Change variable name state into loanState
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+		this.loanId = loanId; //Apply loanId name change 
+		this.book = book;//Apply book name change 
+		this.member = member;//Apply member name change 
+		this.dueDate = dueDate;//Apply dueDate name change 
+		this.loanState = LoanState.CURRENT;//Apply loanState name change 
 	}
 
 	
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+		if (loanState == LoanState.CURRENT &&
+			Calendar.INSTANCE().Date().after(D)) {//Apply loanState name change 
+			this.loanState = LoanState.OVER_DUE;	//Apply loanState name change 		
 		}
 	}
 
