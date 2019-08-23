@@ -34,45 +34,45 @@ public class member implements Serializable {
 
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(ID).append("\n")
-		  .append("  Name:  ").append(LN).append(", ").append(FN).append("\n")
-		  .append("  Email: ").append(EM).append("\n")
-		  .append("  Phone: ").append(PN)
+		StringBuilder stringBuilder = new StringBuilder();//Change sb into stringBuilder
+		sb.append("Member:  ").append(id).append("\n")// Apply changed name id 
+		  .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")// Apply changed name lastName and firstName
+		  .append("  Email: ").append(email).append("\n")// Apply changed name email
+		  .append("  Phone: ").append(phoneNo)// Apply changed name phoneNo
 		  .append("\n")
-		  .append(String.format("  Fines Owed :  $%.2f", FINES))
+		  .append(String.format("  Fines Owed :  $%.2f", fines))// Apply changed name fines
 		  .append("\n");
 		
-		for (loan LoAn : LNS.values()) {
-			sb.append(LoAn).append("\n");
+		for (loan loan : loanNumbers.values()) {//correct the variable name loAn inti loan
+			stringBuilder.append(loan).append("\n");//correct the variable name loAn inti loan
 		}		  
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	
-	public int GeT_ID() {
-		return ID;
+	public int getId() {//Change method Get_ID into getId
+		return id;
 	}
 
 	
-	public List<loan> GeT_LoAnS() {
-		return new ArrayList<loan>(LNS.values());
+	public List<loan> getLoans() {//Change method GeT_LoAnS into getLoans
+		return new ArrayList<loan>(loanNumbers.values());
 	}
 
 	
-	public int Number_Of_Current_Loans() {
-		return LNS.size();
+	public int noOfCurrentLoans() {//Change method Number_Of_Current_Loans into noOfCurrentLoans
+		return loanNumbers.size();
 	}
 
 	
-	public double Fines_OwEd() {
-		return FINES;
+	public double finesOwned() {//Change method Fines_OwEd into finesOwned
+		return fines;
 	}
 
 	
-	public void Take_Out_Loan(loan loan) {
-		if (!LNS.containsKey(loan.ID())) {
-			LNS.put(loan.ID(), loan);
+	public void takeOutLoan(loan loan) {//Change method Take_Out_Loan into takeOutLoan
+		if (!loanNumbers.containsKey(loan.ID())) {
+			loan.put(loan.getId(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -80,39 +80,39 @@ public class member implements Serializable {
 	}
 
 	
-	public String Get_LastName() {
-		return LN;
+	public String getLastName() {//Change method Get_LastName into getLastName
+		return lastName;
 	}
 
 	
-	public String Get_FirstName() {
-		return FN;
+	public String Get_FirstName() {//Change method Get_FirstName into getFirstName
+		return firstName;
 	}
 
 
-	public void Add_Fine(double fine) {
-		FINES += fine;
+	public void Add_Fine(double fine) {//Change method Add_Fine into addFine
+		fine += fine;
 	}
 	
-	public double Pay_Fine(double AmOuNt) {
-		if (AmOuNt < 0) {
+	public double Pay_Fine(double amount) {//Change method Pay_Fine into payFine,change variable amount
+		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
 		double change = 0;
-		if (AmOuNt > FINES) {
-			change = AmOuNt - FINES;
-			FINES = 0;
+		if (amount > fines) {//Apply name changes to amount and fines
+			change = amount - fines;
+			fines = 0;
 		}
 		else {
-			FINES -= AmOuNt;
+			fines -= amount;
 		}
 		return change;
 	}
 
 
-	public void dIsChArGeLoAn(loan LoAn) {
-		if (LNS.containsKey(LoAn.ID())) {
-			LNS.remove(LoAn.ID());
+	public void dischargeLoan(loan loan) {//Change method dIsChArGeLoAn into dischargeLoan
+		if (loanNumbers.containsKey(loan.getId())) {
+			loanNumbers.remove(loan.getId());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
