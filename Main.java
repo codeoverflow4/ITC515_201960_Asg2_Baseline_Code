@@ -186,27 +186,28 @@ public class Main {
 	}
 
 
-	private static void ADD_BOOK() {
+	private static void addBook() {
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
-		output("\n" + B + "\n");
+		String auther = input("Enter author: ");// Variable name change to give a meaningful name
+		String title  = input("Enter title: ");// Variable name change to give a meaningful name
+		String callNumber = input("Enter call number: ");// Variable name change to give a meaningful name
+		book book = library.Add_book(auther, title, callNumber);// Variable name change to give a meaningful name, apply name chnage to LIB
+		output("\n" + book + "\n");//apply name chnage
 		
 	}
 
+
 	
-	private static void ADD_MEMBER() {
+	private static void addMember() {
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
-			output("\n" + M + "\n");
+			String lastName = input("Enter last name: ");// Variable name change to give a meaningful name
+			String firstName  = input("Enter first name: ");// Variable name change to give a meaningful name
+			String email = input("Enter email: ");// Variable name change to give a meaningful name
+			int phoneNumber = Integer.valueOf(input("Enter phone number: ")).intValue();// Variable name change to give a meaningful name
+			member member = library.addMember(lastName, firstName, email, phoneNumber);// Variable name change to give a meaningful name, apply name chnage to LIB
+			output("\n" + member + "\n");//apply name chnage
 			
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException exception) {
 			 output("\nInvalid phone number\n");
 		}
 		
@@ -215,7 +216,7 @@ public class Main {
 
 	private static String input(String prompt) {
 		System.out.print(prompt);
-		return IN.nextLine();
+		return scannerIn.nextLine();//apply name chnage
 	}
 	
 	
