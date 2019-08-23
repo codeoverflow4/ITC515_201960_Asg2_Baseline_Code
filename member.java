@@ -1,3 +1,8 @@
+/* 
+Auther: Osanda
+Reviewer : Sandesh
+Mediator : Rushan
+*/
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,24 +12,24 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class member implements Serializable {
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
-	private double FINES;
+	private String lastName;//LN change into lastName for give meaningful name
+	private String firstName;//LN change into lastName for give meaningful name
+	private String email;//EM change into email for give meaningful name
+	private int phoneNo;//PN change into phoneNo for give meaningful name
+	private int id;//ID change into id 
+	private double fines;//FINES change into lowercase letters
 	
-	private Map<Integer, loan> LNS;
+	private Map<Integer, loan> loanNumbers;//Change LNS into loanNumbers for give meaning
 
 	
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
+		this.lastName = lastName;//Apply name change
+		this.firstName = firstName;//Apply name change
+		this.email = email;//Apply name change
+		this.phoneNo = phoneNo;//Apply name change
+		this.id = id;//Apply name change
 		
-		this.LNS = new HashMap<>();
+		this.loanNumbers = new HashMap<>();//Apply name change
 	}
 
 	
