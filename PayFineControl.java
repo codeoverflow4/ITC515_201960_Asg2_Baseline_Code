@@ -3,15 +3,15 @@ public class PayFineControl {
 	
 	private PayFineUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private CONTROL_STATE StAtE;
+	private CONTROL_STATE state; //State object name changed as state
 	
-	private library Library; //LiBrArY object renamed as Library
-	private member Member;//MeMbEr object renamed as Member
+	private library library; //LiBrArY object renamed as library
+	private member member;//MeMbEr object renamed as member
 
-	//Library object name has been changed
+	
 	public PayFineControl() {
-		this.Library = Library.INSTANCE();
-		StAtE = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE();//library object name has been changed
+		state = ControlState.INITIALISED; // CONTROL_STATE class name changed as ControlState
 	}
 	
 	//Class name changed as SetUi
@@ -20,7 +20,7 @@ public class PayFineControl {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.Ui = ui;
-		ui.Set_State(PayFineUI.UI_STATE.READY);
+		ui.SetState(PayFineUI.UI_STATE.READY); //Set_State class name changed as SetState
 		StAtE = CONTROL_STATE.READY;		
 	}
 
@@ -41,9 +41,9 @@ public class PayFineControl {
 	}
 	
 	//Class name renamed as CancelState
+		StAtE = CONTROL_STATE.CANCELLED;
 	public void CancelState() {
 		Ui.Set_State(PayFineUI.UI_STATE.CANCELLED);
-		StAtE = CONTROL_STATE.CANCELLED;
 	}
 
 	//Class name renamed as PayFine and AmOuNt parameter renamed as amount
@@ -64,6 +64,4 @@ public class PayFineControl {
 		return change;//ChAnGe parameter renamed as change
 	}
 	
-
-
 }
