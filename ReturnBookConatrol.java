@@ -3,7 +3,7 @@ public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private ControlState sTaTe; //CONTROL_STATE class name changed as ControlState //State object name changed as state
+	private ControlState sTaTe;//CONTROL_STATE class name changed as ControlState //State object name changed as state
 	
 	private library library; //Object  name changed as library
 	private loan currentLoan; //Object  name changed as currentLoan
