@@ -92,7 +92,7 @@ public class PayFineUI {
 		System.out.println(object);
 	}	
 			
-	//class name has been changed as Display
+	 //class name has been changed as Display
 	public void Display (Object object) {
 		output(object);
 	}

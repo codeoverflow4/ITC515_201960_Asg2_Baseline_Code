@@ -31,7 +31,7 @@ public class PayFineControl {
 		}	
 		Member = Library.MEMBER(memberId); //MeMbEr objecct and LiBrArY object names have been renamed
 		
-		if (MEMBER == null) { //MeMbEr has been renamed
+		if (MEMBER == null) {  //MeMbEr has been renamed
 			Ui.DiSplAY("Invalid Member Id");
 			return;
 		}
