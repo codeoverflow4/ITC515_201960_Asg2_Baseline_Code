@@ -9,7 +9,7 @@ public class PayFineUI {
 
 	private PayFineControl CoNtRoL; //CoNtRoL object renamed as control
 	private Scanner input;		
-	private UI_STATE state;		//StAtE object renamed as state
+	private UI_STATE state;	//StAtE object renamed as state
 
 	
 	public PayFineUI(PayFineControl control) {

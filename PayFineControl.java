@@ -5,7 +5,7 @@ public class PayFineControl {
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state; //State object name changed as state
 	
-	private library library; //LiBrArY object renamed as library
+	private library library;//LiBrArY object renamed as library
 	private member member;//MeMbEr object renamed as member
 
 	

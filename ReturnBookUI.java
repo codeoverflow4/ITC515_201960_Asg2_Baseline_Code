@@ -8,7 +8,7 @@ public class ReturnBookUI {
 
 	private ReturnBookControl control; //object name changed as control
 	private Scanner input;
-	private UI_STATE state; //object name changed as state
+	private UI_STATE state;//object name changed as state
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
