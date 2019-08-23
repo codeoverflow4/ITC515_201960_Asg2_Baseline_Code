@@ -1,3 +1,4 @@
+//Author -Rushan Mediator- Sandesh , Reviewer - osanda
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,19 +15,31 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
+
+// library change into Library should be meaningful, all upper case, and underscore separated. 
 public class library implements Serializable {
 	
+	//libraryFile change into LIBRARY_FILE
 	private static final String libraryFile = "library.obj";
+	//libraryFile change into LOAN_LIMIT
 	private static final int loanLimit = 2;
+	//libraryFile change into LOAN_PERIOD
 	private static final int loanPeriod = 2;
+	//libraryFile change into FINE_PER_DATE
 	private static final double finePerDay = 1.0;
+	//libraryFile change into MAX_FINES_OWED
 	private static final double maxFinesOwed = 1.0;
+	//libraryFile change into DAMAGE_FEE
 	private static final double damageFee = 2.0;
 	
 	private static library SeLf;
+	//BOOK_ID change into bookId
 	private int BOOK_ID;
+	//MEMBER_ID change into memberId
 	private int MEMBER_ID;
+	//LOAN_ID change into loan_Id
 	private int LOAN_ID;
+	//LOAN_DATE change loadDate
 	private Date LOAN_DATE;
 	
 	private Map<Integer, book> CATALOG;
@@ -37,24 +50,37 @@ public class library implements Serializable {
 	
 
 	private library() {
+ 		//CATALOG change into catalog
 		CATALOG = new HashMap<>();
+ 		//MEMBERS change into members
 		MEMBERS = new HashMap<>();
+		//LOANS change into loans
 		LOANS = new HashMap<>();
+		//change into currentState
 		CURRENT_LOANS = new HashMap<>();
+		//damagedBooks
 		DAMAGED_BOOKS = new HashMap<>();
+		//bookId
 		BOOK_ID = 1;
-		MEMBER_ID = 1;		
+		//MemberId
+		MEMBER_ID = 1;	
+		//LoadId
 		LOAN_ID = 1;		
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized library INSTANCE() {	
+		//SeLf change into self
 		if (SeLf == null) {
+			
+			//PATH change into path
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
+					//SeLf change into self
 					SeLf = (library) LiF.readObject();
+					//Calendar change into calendar and Set_dATE change into setDate and LOAN_DATE change into loanDate
 					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
 					LiF.close();
 				}
@@ -62,14 +88,18 @@ public class library implements Serializable {
 					throw new RuntimeException(e);
 				}
 			}
+			//SeLf change into self
 			else SeLf = new library();
 		}
+		//SeLf change into self
 		return SeLf;
 	}
 
 	
 	public static synchronized void SAVE() {
+		//changed SeLf Into self
 		if (SeLf != null) {
+			// changed SeLf Into self and LOAN_DATE change into loanDate
 			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
 				LoF.writeObject(SeLf);
@@ -82,28 +112,32 @@ public class library implements Serializable {
 		}
 	}
 
-	
+	//BookID change into bookId
 	public int BookID() {
 		return BOOK_ID;
 	}
 	
 	
 	public int MemberID() {
+		//MEMBER_ID change into memberId
 		return MEMBER_ID;
 	}
 	
-	
+	//BookID change into bookId
 	private int NextBID() {
+		//MEMBER_ID change into memberId
 		return BOOK_ID++;
 	}
 
-	
+	//NextMID change into nextMid
 	private int NextMID() {
+		//MEMBER_ID change into memberId
 		return MEMBER_ID++;
 	}
 
-	
+	//NextLID change into nextLid
 	private int NextLID() {
+		//LOAN_ID change into loanId
 		return LOAN_ID++;
 	}
 
@@ -129,14 +163,14 @@ public class library implements Serializable {
 		return member;
 	}
 
-	
+	//Add_book change ito AddBook
 	public book Add_book(String a, String t, String c) {		
 		book b = new book(a, t, c, NextBID());
 		CATALOG.put(b.ID(), b);		
 		return b;
 	}
 
-	
+	//MEMBER change ito Member
 	public member MEMBER(int memberId) {
 		if (MEMBERS.containsKey(memberId)) 
 			return MEMBERS.get(memberId);
@@ -150,7 +184,7 @@ public class library implements Serializable {
 		return null;
 	}
 
-	
+	//LOAN_LIMIT change into LoanLimit
 	public int LOAN_LIMIT() {
 		return loanLimit;
 	}
