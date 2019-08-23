@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner scanner;//Renamed to give a meaningful name
+	private static Scanner scannerIn;//Renamed to give a meaningful name
 	private static library library;//Renamed to give a meaningful name
 	private static String menu;//Variable renamed to lowercase letters
 	private static Calendar calender;//Renamed to give a meaningful name
@@ -44,72 +44,72 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			scannerIn = new Scanner(System.in);//Apply naming change
+			library = library.INSTANCE();//Apply naming change
+			calender = Calendar.INSTANCE();//Apply naming change
+			simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");//Apply naming change
 	
-			for (member m : LIB.MEMBERS()) {
+			for (member member : library.members()) {//Method name change MEMBERS to members 
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book book : library.books()) {//Method name change BOOKS to books 
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			menu = getMenu();// MENU changed to menu and GET_MENU to getMenu
 			
-			boolean e = false;
+			boolean exception = false;// changed e to exception to give a meaningful name
 			
-			while (!e) {
+			while (!exception) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + simpleDateFormat.format(calender.Date()));//Apply name changes
+				String selection = input(menu);//c change to selection to give a meaningful name
 				
-				switch (c.toUpperCase()) {
+				switch (selection.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					addMember();//Apply method naming change
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					members();//Apply method naming change
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					addBook();//Apply method naming change
 					break;
 					
 				case "LB": 
-					BOOKS();
+					books();//Apply method naming change
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					fixBooks();//Apply method naming change
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					borrowBook();//Apply method naming change
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					returnBook();//Apply method naming change
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					currentLoans();//Apply method naming change
 					break;
 					
 				case "P": 
-					FINES();
+					fines();//Apply method naming change
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					incrementDate();//Apply method naming change
 					break;
 					
 				case "Q": 
-					e = true;
+					exception = true;
 					break;
 					
 				default: 
@@ -119,68 +119,68 @@ public class Main {
 				
 				library.SAVE();
 			}			
-		} catch (RuntimeException e) {
-			output(e);
+		} catch (RuntimeException exception) {
+			output(exception);
 		}		
 		output("\nEnded\n");
 	}	
 
 	
-	private static void FINES() {
-		new PayFineUI(new PayFineControl()).RuN();		
+	private static void fines() {//Apply method naming conventions
+		new PayFineUI(new PayFineControl()).run();// Change RuN to run	
 	}
 
 
-	private static void CURRENT_LOANS() {
+	private static void currentLoans() {//Apply method naming conventions
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (loan loan : library.currentLoans()) {
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private static void BOOKS() {
+	private static void books() {//Method Name Changed to lowecase letters
 		output("");
-		for (book book : LIB.BOOKS()) {
+		for (book book : library.Books()) {
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private static void MEMBERS() {
+	private static void members() {//Method Name Changed to lowecase letters
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (member member : library.Members()) {
 			output(member + "\n");
 		}		
 	}
 
 
 
-	private static void BORROW_BOOK() {
+	private static void borrowBook() {
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void RETURN_BOOK() {
-		new ReturnBookUI(new ReturnBookControl()).RuN();		
+	private static void returnBook() {
+		new ReturnBookUI(new ReturnBookControl()).run();// Change RuN to run	
 	}
 
 
-	private static void FIX_BOOKS() {
-		new FixBookUI(new FixBookControl()).RuN();		
+	private static void fixBooks() {
+		new FixBookUI(new FixBookControl()).run();	// Change RuN to run	
 	}
 
 
-	private static void INCREMENT_DATE() {
+	private static void incrementDate() {
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			calender.incrementDate(days);//Apply name change
+			library.checkCurrentLoans();//Apply name change
+			output(simpleDateFormat.format(calender.Date()));//Apply name change
 			
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException exception) {// e changed to exception
 			 output("\nInvalid number of days\n");
 		}
 	}
