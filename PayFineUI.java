@@ -30,7 +30,7 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (state) { //StAtE object renamed as state
+			switch (state) {  //StAtE object renamed as state
 			
 			case READY:
 				String memberString = input("Swipe member card (press <enter> to cancel): ");//String name is changed as memberString
