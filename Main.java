@@ -1,20 +1,25 @@
+/* 
+Auther: Osanda
+Reviewer : Ramitha
+Mediator : Rushan
+*/
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner scanner;//Renamed to give a meaningful name
+	private static library library;//Renamed to give a meaningful name
+	private static String menu;//Variable renamed to lowercase letters
+	private static Calendar calender;//Renamed to give a meaningful name
+	private static SimpleDateFormat simpleDateFormat;//renamed to give a meaningful name
 	
 	
-	private static String Get_menu() {
-		StringBuilder sb = new StringBuilder();
+	private static String getMenu() {//Method name changed according to naming conventions
+		StringBuilder stringBuilder = new StringBuilder();//Renamed to give a meaningful name
 		
-		sb.append("\nLibrary Main Menu\n\n")
+		stringBuilder.append("\nLibrary Main Menu\n\n")//Apply naming change
 		  .append("  M  : add member\n")
 		  .append("  LM : list members\n")
 		  .append("\n")
@@ -33,7 +38,7 @@ public class Main {
 		  .append("\n")
 		  .append("Choice : ");
 		  
-		return sb.toString();
+		return stringBuilder.toString();//Apply naming change
 	}
 
 
@@ -120,7 +125,8 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
+	
+	private static void FINES() {
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
