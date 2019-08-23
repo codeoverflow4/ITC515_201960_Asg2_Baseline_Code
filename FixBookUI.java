@@ -96,7 +96,9 @@ public class FixBookUI {
 
 	
 	private String input(String prompt) {
+	
 		System.out.print(prompt);
+		//added (this) before input it will updated as a this.input....
 		return input.nextLine();
 	}	
 		
@@ -107,6 +109,7 @@ public class FixBookUI {
 	
 
 	public void display(Object object) {
+		//added (this) before output 
 		output(object);
 	}
 	
