@@ -1,20 +1,20 @@
 public class FixBookControl {
 	
-	private FixBookUI UI;
-	private enum CONTROL_STATE { INITIALISED, READY, FIXING };
-	private CONTROL_STATE StAtE;
+	private FixBookUI ui;//variable name changed
+	private enum ControlState { INITIALISED, READY, FIXING };//Enum chaged to CamelBack
+	private ControlState controlState;//variable name changed and removed the underscore separater 
 	
-	private library LIB;
-	private book Cur_Book;
+	private library library;//variable name changed 
+	private book currentBook;//variable name changed
 
 
 	public FixBookControl() {
-		this.LIB = LIB.INSTANCE();
-		StAtE = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE();
+		controlState = ControlState.INITIALISED;//
 	}
 	
 	
-	public void Set_Ui(FixBookUI ui) {
+	public void SetUi(FixBookUI ui) {
 		if (!StAtE.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
