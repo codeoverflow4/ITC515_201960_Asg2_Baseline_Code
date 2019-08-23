@@ -1,17 +1,23 @@
+/* 
+Auther: Osanda
+Reviewer : Sandesh
+Mediator : Rushan
+*/
 public class FixBookControl {
 	
-	private FixBookUI UI;
-	private enum CONTROL_STATE { INITIALISED, READY, FIXING };
-	private CONTROL_STATE StAtE;
+	private FixBookUI fixBookUI; //UI renamed to fixBookUI
+	private enum ControlState { INITIALISED, READY, FIXING };// enum CONTROL_STATE renamed to ControlState
+	private ControlState controlState;// StAtE renamed to controlState
 	
-	private library LIB;
-	private book Cur_Book;
+	private library library; //Lib renamed to library for give meaningful name
+	private book currentBook;//Cur_Book renamed to currentBook for give meaningful name, removed Underscore
 
 
 	public FixBookControl() {
-		this.LIB = LIB.INSTANCE();
-		StAtE = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE();//Apply variable,enum name changes
+		controlState = ControlState.INITIALISED;//Apply variable,enum name changes
 	}
+	
 	
 	
 	public void Set_Ui(FixBookUI ui) {
