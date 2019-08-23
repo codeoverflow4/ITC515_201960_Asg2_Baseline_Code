@@ -31,7 +31,7 @@ public class ReturnBookControl {
 		}	
 		book currentBook = library.Book(Book_ID); //library name changed //CUR_book named as currentBook
 		
-		if (currentBook == null) {//CUR_book named as currentBook
+		if (currentBook == null) { //CUR_book named as currentBook
 			Ui.display("Invalid Book Id");
 			return;
 		}
